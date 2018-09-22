@@ -23,6 +23,14 @@ namespace XMarksThePub
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
+
+            Button start = FindViewById<Button>(Resource.Id.startButton);
+            start.Click += StartClick;
+        }
+
+        private void StartClick(object sender, EventArgs e)
+        {
+            StartActivity(typeof(PubActivity));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -48,6 +56,8 @@ namespace XMarksThePub
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
+
+        
 	}
 }
 
