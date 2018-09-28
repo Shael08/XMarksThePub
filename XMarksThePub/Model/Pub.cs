@@ -14,9 +14,22 @@ namespace XMarksThePub.Model
 {
     public class Pub
     {
+        public Pub(string name, string description, Type activityToLaunch)
+        {
+            Name = name;
+            Description = description;
+            ActivityToLaunch = activityToLaunch;
+        }
 
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public int? PhotoId { get; set; }
+        public string Name { get; }
+        public string Description { get;}
+        public int? PhotoId { get;}
+        public Type ActivityToLaunch { get; }
+
+        public void Start(Activity context)
+        {
+            var i = new Intent(context, ActivityToLaunch);
+            context.StartActivity(i);
+        }
     }
 }
