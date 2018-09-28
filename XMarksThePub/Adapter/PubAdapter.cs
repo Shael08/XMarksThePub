@@ -26,14 +26,17 @@ namespace XMarksThePub.Adapter
         {
             return position;
         }
+
         public override Pub this[int position]
         {
             get { return pubList[position]; }
         }
+
         public override int Count
         {
             get { return pubList.Count; }
         }
+
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View view = convertView; // re-use an existing view, if one is available

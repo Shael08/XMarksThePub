@@ -14,8 +14,8 @@ using XMarksThePub.Model;
 
 namespace XMarksThePub
 {
-    [Activity(Label = "PubActivity", Theme = "@style/AppTheme.NoActionBar")]
-    public class PubActivity : MainActivity
+    [Activity(Label = "ListActivity", Theme = "@style/AppTheme.NoActionBar")]
+    public class ListActivity : MainActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,10 +26,13 @@ namespace XMarksThePub
             ListView pubListView = FindViewById<ListView>(Resource.Id.PubListView);
 
             List<Pub> listItems = new List<Pub>();
-            Pub pubitem = new Pub();
-            pubitem.Id = 123;
-            pubitem.Name = "kocsma";
-            pubitem.PhotoId = 456;
+
+            Pub pubitem = new Pub
+            {
+                Id = 123,
+                Name = "kocsma",
+                PhotoId = 456
+            };
 
             listItems.Add(pubitem);
             listItems.Add(pubitem);

@@ -30,7 +30,7 @@ namespace XMarksThePub
 
         private void StartClick(object sender, EventArgs e)
         {
-            StartActivity(typeof(PubActivity));
+            StartActivity(typeof(ListActivity));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

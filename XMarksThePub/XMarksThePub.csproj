@@ -59,7 +59,7 @@
     <Compile Include="Adapter\PubAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Pub.cs" />
-    <Compile Include="PubActivity.cs" />
+    <Compile Include="ListActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
