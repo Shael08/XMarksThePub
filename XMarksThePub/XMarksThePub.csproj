@@ -57,7 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\PubAdapter.cs" />
+    <Compile Include="FeatureRowHolder.cs" />
+    <Compile Include="Fragment\ErrorDialogFragment.cs" />
+    <Compile Include="GoogleMapHelpers.cs" />
+    <Compile Include="LocationActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MapWithMarkersActivity.cs" />
     <Compile Include="Model\Pub.cs" />
     <Compile Include="ListActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -70,9 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\content_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
@@ -101,9 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\PubListItem.xml" />
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>60.1142.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\PubListLayout.axml">
@@ -111,7 +113,19 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fragment\" />
+    <AndroidResource Include="Resources\layout\Feature.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\LocationLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\MapLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
