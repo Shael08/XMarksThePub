@@ -2522,8 +2522,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0040
 			public const int META = 2131427392;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int PubListView = 2131427517;
+			// aapt resource value: 0x7f0b00bc
+			public const int PubListView = 2131427516;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int SHIFT = 2131427393;
@@ -2531,8 +2531,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0042
 			public const int SYM = 2131427394;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int action0 = 2131427501;
+			// aapt resource value: 0x7f0b00ac
+			public const int action0 = 2131427500;
 			
 			// aapt resource value: 0x7f0b0086
 			public const int action_bar = 2131427462;
@@ -2555,17 +2555,17 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0064
 			public const int action_bar_title = 2131427428;
 			
-			// aapt resource value: 0x7f0b00aa
-			public const int action_container = 2131427498;
+			// aapt resource value: 0x7f0b00a9
+			public const int action_container = 2131427497;
 			
 			// aapt resource value: 0x7f0b0087
 			public const int action_context_bar = 2131427463;
 			
-			// aapt resource value: 0x7f0b00b1
-			public const int action_divider = 2131427505;
+			// aapt resource value: 0x7f0b00b0
+			public const int action_divider = 2131427504;
 			
-			// aapt resource value: 0x7f0b00ab
-			public const int action_image = 2131427499;
+			// aapt resource value: 0x7f0b00aa
+			public const int action_image = 2131427498;
 			
 			// aapt resource value: 0x7f0b0003
 			public const int action_menu_divider = 2131427331;
@@ -2582,14 +2582,14 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0066
 			public const int action_mode_close_button = 2131427430;
 			
-			// aapt resource value: 0x7f0b00c1
-			public const int action_settings = 2131427521;
+			// aapt resource value: 0x7f0b00c0
+			public const int action_settings = 2131427520;
 			
-			// aapt resource value: 0x7f0b00ac
-			public const int action_text = 2131427500;
+			// aapt resource value: 0x7f0b00ab
+			public const int action_text = 2131427499;
 			
-			// aapt resource value: 0x7f0b00ba
-			public const int actions = 2131427514;
+			// aapt resource value: 0x7f0b00b9
+			public const int actions = 2131427513;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int activity_chooser_view_content = 2131427431;
@@ -2612,8 +2612,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0043
 			public const int always = 2131427395;
 			
-			// aapt resource value: 0x7f0b00a8
-			public const int animateButton = 2131427496;
+			// aapt resource value: 0x7f0b00a7
+			public const int animateButton = 2131427495;
 			
 			// aapt resource value: 0x7f0b0060
 			public const int async = 2131427424;
@@ -2633,8 +2633,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b006d
 			public const int buttonPanel = 2131427437;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int cancel_action = 2131427502;
+			// aapt resource value: 0x7f0b00ad
+			public const int cancel_action = 2131427501;
 			
 			// aapt resource value: 0x7f0b004f
 			public const int center = 2131427407;
@@ -2648,8 +2648,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b007d
 			public const int checkbox = 2131427453;
 			
-			// aapt resource value: 0x7f0b00b6
-			public const int chronometer = 2131427510;
+			// aapt resource value: 0x7f0b00b5
+			public const int chronometer = 2131427509;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int clip_horizontal = 2131427416;
@@ -2684,8 +2684,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b006a
 			public const int default_activity_button = 2131427434;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int description = 2131427492;
+			// aapt resource value: 0x7f0b0095
+			public const int description = 2131427477;
 			
 			// aapt resource value: 0x7f0b009b
 			public const int design_bottom_sheet = 2131427483;
@@ -2711,8 +2711,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b003b
 			public const int end = 2131427387;
 			
-			// aapt resource value: 0x7f0b00bc
-			public const int end_padder = 2131427516;
+			// aapt resource value: 0x7f0b00bb
+			public const int end_padder = 2131427515;
 			
 			// aapt resource value: 0x7f0b004a
 			public const int enterAlways = 2131427402;
@@ -2759,8 +2759,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b006c
 			public const int icon = 2131427436;
 			
-			// aapt resource value: 0x7f0b00bb
-			public const int icon_group = 2131427515;
+			// aapt resource value: 0x7f0b00ba
+			public const int icon_group = 2131427514;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int icon_only = 2131427364;
@@ -2771,8 +2771,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0069
 			public const int image = 2131427433;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int info = 2131427511;
+			// aapt resource value: 0x7f0b00b6
+			public const int info = 2131427510;
 			
 			// aapt resource value: 0x7f0b0063
 			public const int italic = 2131427427;
@@ -2801,20 +2801,20 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b006b
 			public const int list_item = 2131427435;
 			
-			// aapt resource value: 0x7f0b00a9
-			public const int map = 2131427497;
+			// aapt resource value: 0x7f0b00a8
+			public const int map = 2131427496;
 			
-			// aapt resource value: 0x7f0b00a5
-			public const int map_container = 2131427493;
+			// aapt resource value: 0x7f0b00a4
+			public const int map_container = 2131427492;
 			
-			// aapt resource value: 0x7f0b00c0
-			public const int masked = 2131427520;
+			// aapt resource value: 0x7f0b00bf
+			public const int masked = 2131427519;
 			
-			// aapt resource value: 0x7f0b00b0
-			public const int media_actions = 2131427504;
+			// aapt resource value: 0x7f0b00af
+			public const int media_actions = 2131427503;
 			
-			// aapt resource value: 0x7f0b00be
-			public const int message = 2131427518;
+			// aapt resource value: 0x7f0b00bd
+			public const int message = 2131427517;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -2837,14 +2837,14 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b001f
 			public const int normal = 2131427359;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int notification_background = 2131427513;
-			
-			// aapt resource value: 0x7f0b00b3
-			public const int notification_main_column = 2131427507;
+			// aapt resource value: 0x7f0b00b8
+			public const int notification_background = 2131427512;
 			
 			// aapt resource value: 0x7f0b00b2
-			public const int notification_main_column_container = 2131427506;
+			public const int notification_main_column = 2131427506;
+			
+			// aapt resource value: 0x7f0b00b1
+			public const int notification_main_column_container = 2131427505;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int parallax = 2131427414;
@@ -2870,11 +2870,11 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0054
 			public const int right = 2131427412;
 			
-			// aapt resource value: 0x7f0b00b8
-			public const int right_icon = 2131427512;
+			// aapt resource value: 0x7f0b00b7
+			public const int right_icon = 2131427511;
 			
-			// aapt resource value: 0x7f0b00b4
-			public const int right_side = 2131427508;
+			// aapt resource value: 0x7f0b00b3
+			public const int right_side = 2131427507;
 			
 			// aapt resource value: 0x7f0b0020
 			public const int satellite = 2131427360;
@@ -2984,11 +2984,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0055
 			public const int start = 2131427413;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int startButton = 2131427477;
-			
-			// aapt resource value: 0x7f0b00af
-			public const int status_bar_latest_event_content = 2131427503;
+			// aapt resource value: 0x7f0b00ae
+			public const int status_bar_latest_event_content = 2131427502;
 			
 			// aapt resource value: 0x7f0b0080
 			public const int submenuarrow = 2131427456;
@@ -3026,8 +3023,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0015
 			public const int textinput_error = 2131427349;
 			
-			// aapt resource value: 0x7f0b00b5
-			public const int time = 2131427509;
+			// aapt resource value: 0x7f0b00b4
+			public const int time = 2131427508;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int title = 2131427356;
@@ -3074,8 +3071,8 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00bf
-			public const int visible = 2131427519;
+			// aapt resource value: 0x7f0b00be
+			public const int visible = 2131427518;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int wide = 2131427366;
@@ -3086,11 +3083,11 @@ namespace XMarksThePub
 			// aapt resource value: 0x7f0b0039
 			public const int wrap_content = 2131427385;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int zoomInButton = 2131427494;
+			// aapt resource value: 0x7f0b00a5
+			public const int zoomInButton = 2131427493;
 			
-			// aapt resource value: 0x7f0b00a7
-			public const int zoomOutButton = 2131427495;
+			// aapt resource value: 0x7f0b00a6
+			public const int zoomOutButton = 2131427494;
 			
 			static Id()
 			{
