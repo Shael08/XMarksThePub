@@ -43,6 +43,8 @@ namespace XMarksThePub
             SetContentView(Resource.Layout.PubListLayout);
             isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
 
+            var interestType = (InterestType)Intent.Extras.GetInt("InterestType");
+
             InitializeListView();
 
         }

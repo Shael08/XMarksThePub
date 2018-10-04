@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace XMarksThePub.Model
 {
-    public enum InterestingType
+    public enum InterestType
     {
         pub = 0,
         tobbaco = 1

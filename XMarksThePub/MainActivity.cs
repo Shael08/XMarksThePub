@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -13,7 +14,7 @@ namespace XMarksThePub
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        InterestingType interestType;
+        InterestType interestType;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,24 +36,27 @@ namespace XMarksThePub
 
         private void Kocsma_Click(object sender, EventArgs e)
         {
-            interestType = InterestingType.pub;
+            interestType = InterestType.pub;
 
-            RunOnUiThread(() =>
-                Toast.MakeText(this, "Pub selected", ToastLength.Long).Show()
-            );
+            //RunOnUiThread(() =>
+            //    Toast.MakeText(this, "Pub selected", ToastLength.Long).Show()
+            //);
 
         }
 
         private void Dohanybolt_Click(object sender, EventArgs e)
         {
 
-            interestType = InterestingType.tobbaco;
+            interestType = InterestType.tobbaco;
         }
 
 
         private void StartClick(object sender, EventArgs e)
         {
-            StartActivity(typeof(ListActivity));
+            var intent = new Intent(this, typeof(ListActivity));
+            intent.PutExtra("InterestType", (int)interestType);
+
+            StartActivity(intent);
         }
         
 	}
