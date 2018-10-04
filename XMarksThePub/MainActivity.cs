@@ -27,6 +27,10 @@ namespace XMarksThePub
             RadioButton kocsma = FindViewById<RadioButton>(Resource.Id.kocsmaRadioButton);
             kocsma.Click += Kocsma_Click;
 
+            RadioButton dohanybolt = FindViewById<RadioButton>(Resource.Id.DohanyboltRadioButton);
+            dohanybolt.Click += Dohanybolt_Click;
+
+
         }
 
         private void Kocsma_Click(object sender, EventArgs e)
@@ -38,6 +42,13 @@ namespace XMarksThePub
             );
 
         }
+
+        private void Dohanybolt_Click(object sender, EventArgs e)
+        {
+
+            interestType = InterestingType.tobbaco;
+        }
+
 
         private void StartClick(object sender, EventArgs e)
         {
