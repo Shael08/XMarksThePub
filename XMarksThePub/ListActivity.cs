@@ -25,10 +25,10 @@ namespace XMarksThePub
         public static readonly string TAG = "XMarksThePub";
 
 
-        static readonly List<Pub> listItems = new List<Pub> {new Pub("Kocsma", "lofasz", typeof(LocationActivity)),
-                                                             new Pub("Kiskorsó", "lofasz", typeof(MapWithMarkersActivity)),
-                                                             new Pub("Kocsma", "lofasz", typeof(LocationActivity)),
-                                                             new Pub("Csinos", "asdasd", typeof(MapWithMarkersActivity))
+        static readonly List<Pub> listItems = new List<Pub> {new Pub("Kocsma", "Opening Hours", typeof(LocationActivity)),
+                                                             new Pub("Kiskorsó", "Opening Hours", typeof(MapWithMarkersActivity)),
+                                                             new Pub("Kocsma", "Opening Hours", typeof(LocationActivity)),
+                                                             new Pub("Csinos", "Opening Hours", typeof(MapWithMarkersActivity))
                                                             };
 
 
