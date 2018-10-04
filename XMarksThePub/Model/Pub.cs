@@ -12,6 +12,13 @@ using Android.Widget;
 
 namespace XMarksThePub.Model
 {
+    public enum InterestType
+    {
+        pub = 0,
+        tobbaco = 1
+    }
+
+
     public class Pub
     {
         public Pub(string name, string description, Type activityToLaunch)

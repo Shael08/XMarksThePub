@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<RadioGroup
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<RadioButton
+			android:layout_width="200dp"
+			android:layout_height="125dp"
+			android:text="Kocsma"
+			android:id="@+id/kocsmaRadioButton"
+			android:textStyle="bold"
+			android:textSize="50px"
+			android:textAlignment="center"
+			android:clickable="true"
+			android:layout_gravity="center"
+			android:layout_marginLeft="0.0dp" />
+		<RadioButton
+			android:layout_width="200dp"
+			android:layout_height="125dp"
+			android:text="Dohánybolt"
+			android:id="@+id/DohanyboltRadioButton"
+			android:textStyle="bold"
+			android:textSize="50px"
+			android:textAlignment="center"
+			android:clickable="true"
+			android:layout_gravity="center"
+			android:layout_marginLeft="0.0dp" 
+		 />
+	</RadioGroup>
 	<Button
 		android:text="Start"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="110.5dp"
 		android:id="@+id/startButton"
-		android:onClick="startClick"
-		android:clickable="true" />
+		android:clickable="true"
+		android:textAlignment="center"
+		android:layout_marginBottom="240.5dp"
+		android:layout_gravity="bottom"
+		android:layout_marginTop="9.5dp"
+		android:textSize="35px"
+	/>
+	
 </LinearLayout>
