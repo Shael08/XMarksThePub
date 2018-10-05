@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("XMarksThePub.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("xMarksThePub.Resource", IsApplication=true)]
 
-namespace XMarksThePub
+namespace xMarksThePub
 {
 	
 	
