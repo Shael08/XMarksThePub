@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Android;
 using Android.App;
 using Android.Content.PM;
@@ -12,6 +11,7 @@ using Android.Support.V4.Content;
 using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
+using xMarksThePub;
 
 namespace XMarksThePub
 {
@@ -75,8 +75,8 @@ namespace XMarksThePub
                     ActivityCompat.RequestPermissions(activity, PERMISSIONS_LOCATION, requestCode);
                 });
 
-                Snackbar.Make(layoutForSnackbar, Resource.String.location_permission_rationale, Snackbar.LengthIndefinite)
-                        .SetAction(Resource.String.ok, requestPermissionAction);
+                Snackbar.Make(layoutForSnackbar, xMarksThePub.Resource.String.location_permission_rationale, Snackbar.LengthIndefinite)
+                        .SetAction(xMarksThePub.Resource.String.ok, requestPermissionAction);
             }
             else
             {

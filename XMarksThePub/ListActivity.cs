@@ -13,6 +13,7 @@ using XMarksThePub.Model;
 using XMarksThePub.Fragment;
 
 using Uri = Android.Net.Uri;
+using xMarksThePub;
 
 namespace XMarksThePub
 {
@@ -93,13 +94,13 @@ namespace XMarksThePub
         void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
         {
             var position = e.Position;
-            if (position == 0)
-            {
-                var geoUri = AndroidUri.Parse("geo:46.0754064, 18.198169");
-                var mapIntent = new Intent(Intent.ActionView, geoUri);
-                StartActivity(mapIntent);
-                return;
-            }
+            //if (position == 0)
+            //{
+            //    var geoUri = AndroidUri.Parse("geo:46.0754064, 18.198169");
+            //    var mapIntent = new Intent(Intent.ActionView, geoUri);
+            //    StartActivity(mapIntent);
+            //    return;
+            //}
 
 
             var sampleToStart = listItems[position];
