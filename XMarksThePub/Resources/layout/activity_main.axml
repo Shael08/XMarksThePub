@@ -43,5 +43,14 @@
 		android:layout_marginTop="9.5dp"
 		android:textSize="35px"
 	/>
-	
+	    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/dolanBefore"       
+		android:scaleType="fitCenter"/> 
+		<ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/dolanAfter"        
+		android:scaleType="fitCenter"/> 
 </LinearLayout>
