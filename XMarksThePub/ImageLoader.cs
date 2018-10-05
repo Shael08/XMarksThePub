@@ -86,7 +86,7 @@ namespace xMarksThePub
 
         private string PathToFile(int imageId)
         {
-            var path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), imageId.ToString() + ".jpg" );
+            var path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), imageId.ToString() + ".png" );
             return path;
         }
 
