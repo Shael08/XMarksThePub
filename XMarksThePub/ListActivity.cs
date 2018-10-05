@@ -13,6 +13,7 @@ using XMarksThePub.Model;
 using XMarksThePub.Fragment;
 
 using Uri = Android.Net.Uri;
+using xMarksThePub;
 
 namespace XMarksThePub
 {
@@ -25,9 +26,10 @@ namespace XMarksThePub
         public static readonly string TAG = "XMarksThePub";
 
 
-        static readonly List<Pub> listItems = new List<Pub> {new Pub("Kocsma", "lofasz", typeof(LocationActivity)),
-                                                             new Pub("Kiskorsó", "lofasz", typeof(MapWithMarkersActivity)),
-                                                             new Pub("Kocsma", "lofasz", typeof(LocationActivity)),
+        static readonly List<Pub> listItems = new List<Pub> {new Pub("Kocsma", "Opening Hours", typeof(LocationActivity)),
+                                                             new Pub("Kiskorsó", "Opening Hours", typeof(MapWithMarkersActivity)),
+                                                             new Pub("Kocsma", "Opening Hours", typeof(LocationActivity)),
+                                                             new Pub("Csinos", "Opening Hours", typeof(MapWithMarkersActivity))
                                                             };
 
 
@@ -41,6 +43,8 @@ namespace XMarksThePub
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PubListLayout);
             isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
+
+            var interestType = (InterestType)Intent.Extras.GetInt("InterestType");
 
             InitializeListView();
 
@@ -90,13 +94,13 @@ namespace XMarksThePub
         void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
         {
             var position = e.Position;
-            if (position == 0)
-            {
-                var geoUri = AndroidUri.Parse("geo:46.0754064, 18.198169");
-                var mapIntent = new Intent(Intent.ActionView, geoUri);
-                StartActivity(mapIntent);
-                return;
-            }
+            //if (position == 0)
+            //{
+            //    var geoUri = AndroidUri.Parse("geo:46.0754064, 18.198169");
+            //    var mapIntent = new Intent(Intent.ActionView, geoUri);
+            //    StartActivity(mapIntent);
+            //    return;
+            //}
 
 
             var sampleToStart = listItems[position];
