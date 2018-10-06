@@ -22,7 +22,7 @@ namespace XMarksThePub
         public void UpdateFrom(Pub item)
         {
             title.Text = item.Name;
-            description.Text = item.Description;
+            description.Text = item.Open + " - " + item.Close;
         }
     }
 }
