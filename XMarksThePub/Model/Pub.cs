@@ -14,8 +14,8 @@ namespace XMarksThePub.Model
 {
     public enum InterestType
     {
-        pub = 0,
-        tobbaco = 1
+        Pub = 0,
+        Tobbaco = 1
     }
 
 
