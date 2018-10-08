@@ -27,17 +27,13 @@ namespace xMarksThePub.Fragment
         private static List<Pub> listItems = new List<Pub>();
         ListView pubListView;
         PubAdapter listAdapter;
-        bool isGooglePlayServicesInstalled;
-        public static readonly int RC_INSTALL_GOOGLE_PLAY_SERVICES = 1000;
-        public static readonly string TAG = "XMarksThePub";
-
 
         public PubTobbacoFragment() : base() { }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
+
 
             // Create your fragment here
 
@@ -52,22 +48,13 @@ namespace xMarksThePub.Fragment
             PopulateList();
             pubListView = view.FindViewById<ListView>(Resource.Id.PubTobbacoListView);
 
-            if (isGooglePlayServicesInstalled)
-            {
-                listAdapter = new PubAdapter(Activity, listItems);
-            }
-            else
-            {
-                Log.Error(TAG, "Google Play Services is not installed");
-                listAdapter = new PubAdapter(Activity, null);
-            }
+            listAdapter = new PubAdapter(Activity, listItems);
 
             pubListView.Adapter = listAdapter;
             pubListView.ItemClick += ItemSelected;
 
             return view;
         }
-
 
         private void PopulateList()
         {
@@ -87,18 +74,6 @@ namespace xMarksThePub.Fragment
 
         }
 
-        //protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        //{
-        //    if (RC_INSTALL_GOOGLE_PLAY_SERVICES == requestCode && resultCode == Result.Ok)
-        //    {
-        //        isGooglePlayServicesInstalled = true;
-        //    }
-        //    else
-        //    {
-        //        Log.Warn(TAG, $"Don't know how to handle resultCode {resultCode} for request {requestCode}.");
-        //    }
-        //}
-
         void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
         {
             var position = e.Position;
@@ -114,26 +89,6 @@ namespace xMarksThePub.Fragment
             sampleToStart.Start(Activity);
         }
 
-        bool TestIfGooglePlayServicesIsInstalled()
-        {
-            var queryResult = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(Activity);
-            if (queryResult == ConnectionResult.Success)
-            {
-                Log.Info(TAG, "Google Play Services is installed on this device.");
-                return true;
-            }
 
-            if (GoogleApiAvailability.Instance.IsUserResolvableError(queryResult))
-            {
-                var errorString = GoogleApiAvailability.Instance.GetErrorString(queryResult);
-                Log.Error(TAG, "There is a problem with Google Play Services on this device: {0} - {1}", queryResult, errorString);
-                //var errorDialog = GoogleApiAvailability.Instance.GetErrorDialog(this, queryResult, RC_INSTALL_GOOGLE_PLAY_SERVICES);
-                //var dialogFrag = new Fragment.ErrorDialogFragment(errorDialog);
-
-                //dialogFrag.Show(FragmentManager, "GooglePlayServicesDialog");
-            }
-
-            return false;
-        }
     }
 }
