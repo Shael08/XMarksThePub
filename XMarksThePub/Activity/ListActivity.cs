@@ -29,32 +29,72 @@ namespace XMarksThePub
     [Activity(Label = "ListActivity", Theme = "@style/AppTheme.NoActionBar")]
     public class ListActivity : AppCompatActivity, IOnMapReadyCallback
     {
+        public static readonly int RC_INSTALL_GOOGLE_PLAY_SERVICES = 1000;
+        public static readonly string TAG = "XMarksThePub";
+
         BottomNavigationView bottomNavigation;
         static readonly LatLng JakabhegyiLatLng = new LatLng(46.0754064, 18.198169);
         static readonly LatLng kiskorsoLatLng = new LatLng(46.0771346, 18.2103851);
         GoogleMap googleMap;
+        bool isGooglePlayServicesInstalled;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PubListLayout);
 
+            SetFragments();
+        }
 
+        void SetFragments()
+        {
             var interestType = (InterestType)Intent.Extras.GetInt("InterestType");
 
-            bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
+            isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
 
-            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
-
-            switch (interestType)
+            if (isGooglePlayServicesInstalled)
             {
-                case InterestType.Pub:
-                    bottomNavigation.SelectedItemId = Resource.Id.menu_pub;
-                    break;
-                case InterestType.Tobbaco:
-                    bottomNavigation.SelectedItemId = Resource.Id.menu_tobbaco;
-                    break;
+
+                bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
+
+                bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
+
+                switch (interestType)
+                {
+                    case InterestType.Pub:
+                        bottomNavigation.SelectedItemId = Resource.Id.menu_pub;
+                        break;
+                    case InterestType.Tobbaco:
+                        bottomNavigation.SelectedItemId = Resource.Id.menu_tobbaco;
+                        break;
+                }
             }
+            else
+            {
+                Log.Error(TAG, "Google Play Services is not installed");
+            }
+        }
+
+        bool TestIfGooglePlayServicesIsInstalled()
+        {
+            var queryResult = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+            if (queryResult == ConnectionResult.Success)
+            {
+                Log.Info(TAG, "Google Play Services is installed on this device.");
+                return true;
+            }
+
+            if (GoogleApiAvailability.Instance.IsUserResolvableError(queryResult))
+            {
+                var errorString = GoogleApiAvailability.Instance.GetErrorString(queryResult);
+                Log.Error(TAG, "There is a problem with Google Play Services on this device: {0} - {1}", queryResult, errorString);
+                var errorDialog = GoogleApiAvailability.Instance.GetErrorDialog(this, queryResult, RC_INSTALL_GOOGLE_PLAY_SERVICES);
+                var dialogFrag = new Fragment.ErrorDialogFragment(errorDialog);
+
+                dialogFrag.Show(FragmentManager, "GooglePlayServicesDialog");
+            }
+
+            return false;
         }
 
         private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
@@ -67,7 +107,7 @@ namespace XMarksThePub
             FrameLayout Listlayout = (FrameLayout)FindViewById(Resource.Id.content_frame);
             FrameLayout Maplayout = (FrameLayout)FindViewById(Resource.Id.content_frame_map);
 
-            if (id != Resource.Id.map)
+            if (id != Resource.Id.menu_map)
             {
                 Listlayout.Visibility = Android.Views.ViewStates.Visible;
                 Maplayout.Visibility = Android.Views.ViewStates.Gone;
@@ -97,6 +137,18 @@ namespace XMarksThePub
 
                 var mapFragment = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.content_frame_map);
                 mapFragment.GetMapAsync(this);
+            }
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if (RC_INSTALL_GOOGLE_PLAY_SERVICES == requestCode && resultCode == Result.Ok)
+            {
+                isGooglePlayServicesInstalled = true;
+            }
+            else
+            {
+                Log.Warn(TAG, $"Don't know how to handle resultCode {resultCode} for request {requestCode}.");
             }
         }
 
