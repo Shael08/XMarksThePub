@@ -40,9 +40,9 @@ namespace XMarksThePub
             RemoveEventHandlers();
         }
 
-        private void InitViews()
+        private void InitViews()  //konkrétan innen indul az alkalmazás
         {
-            start = FindViewById<Button>(Resource.Id.startButton);
+            start = FindViewById<Button>(Resource.Id.startButton); //a legelején a sart gomb...
             pub = FindViewById<RadioButton>(Resource.Id.kocsmaRadioButton);
             tobbaco = FindViewById<RadioButton>(Resource.Id.DohanyboltRadioButton);
         }
