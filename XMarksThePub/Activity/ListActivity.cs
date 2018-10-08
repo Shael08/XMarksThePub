@@ -17,129 +17,115 @@ using xMarksThePub;
 using xMarksThePub.Activity;
 using Newtonsoft.Json;
 using xMarksThePub.Model;
+using xMarksThePub.Fragment;
+using Android.Support.Design.Widget;
+using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
 
 namespace XMarksThePub
 {
     using AndroidUri = Uri;
 
     [Activity(Label = "ListActivity", Theme = "@style/AppTheme.NoActionBar")]
-    public class ListActivity : AppCompatActivity
+    public class ListActivity : AppCompatActivity, IOnMapReadyCallback
     {
-        public static readonly int RC_INSTALL_GOOGLE_PLAY_SERVICES = 1000;
-        public static readonly string TAG = "XMarksThePub";
-        private static List<Pub> listItems = new List<Pub>();
-        bool isGooglePlayServicesInstalled;
-
-        ListView pubListView;
-        PubAdapter listAdapter;
+        BottomNavigationView bottomNavigation;
+        static readonly LatLng JakabhegyiLatLng = new LatLng(46.0754064, 18.198169);
+        static readonly LatLng kiskorsoLatLng = new LatLng(46.0771346, 18.2103851);
+        GoogleMap googleMap;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PubListLayout);
-            isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
+
 
             var interestType = (InterestType)Intent.Extras.GetInt("InterestType");
 
-            PopulateList();
-            InitializeListView();
-        }
+            bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
 
-        private void PopulateList()
-        {
-            Dictionary<string, OpeningHours> openingHours = new Dictionary<string, OpeningHours>();
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
-            for (int i=0; i<7; i++)
+            switch (interestType)
             {
-                openingHours.Add(Enum.GetName(typeof(DayOfWeek), i), new OpeningHours(new TimeSpan(i, 0, 0), new TimeSpan(i + 12, 0, 0)));
-            }
-
-            listItems = new List<Pub> {new Pub("Kocsma", openingHours, typeof(LocationActivity)),
-                                       new Pub("Kiskorsó", openingHours, typeof(MapWithMarkersActivity)),
-                                       new Pub("Kocsma", openingHours, typeof(LocationActivity)),
-                                       new Pub("Csinos", openingHours, typeof(MapWithMarkersActivity)),
-                                       new Pub("ImageTestWithDolan", openingHours, typeof(ImageLoaderTestActivity))
-                                       };
-
-        }
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            if (RC_INSTALL_GOOGLE_PLAY_SERVICES == requestCode && resultCode == Result.Ok)
-            {
-                isGooglePlayServicesInstalled = true;
-            }
-            else
-            {
-                Log.Warn(TAG, $"Don't know how to handle resultCode {resultCode} for request {requestCode}.");
+                case InterestType.Pub:
+                    bottomNavigation.SelectedItemId = Resource.Id.menu_pub;
+                    break;
+                case InterestType.Tobbaco:
+                    bottomNavigation.SelectedItemId = Resource.Id.menu_tobbaco;
+                    break;
             }
         }
 
-        protected override void OnResume()
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
         {
-            base.OnResume();
-            pubListView.ItemClick += ItemSelected;
+            LoadFragment(e.Item.ItemId);
         }
 
-        protected override void OnPause()
+        void LoadFragment(int id)
         {
-            pubListView.ItemClick -= ItemSelected;
-            base.OnPause();
-        }
+            FrameLayout Listlayout = (FrameLayout)FindViewById(Resource.Id.content_frame);
+            FrameLayout Maplayout = (FrameLayout)FindViewById(Resource.Id.content_frame_map);
 
-        private void InitializeListView()
-        {
-            pubListView = FindViewById<ListView>(Resource.Id.PubListView);
-
-            if (isGooglePlayServicesInstalled)
+            if (id != Resource.Id.map)
             {
-                listAdapter = new PubAdapter(this, listItems);
+                Listlayout.Visibility = Android.Views.ViewStates.Visible;
+                Maplayout.Visibility = Android.Views.ViewStates.Gone;
+
+                Android.Support.V4.App.Fragment fragment = null;
+                switch (id)
+                {
+                    case Resource.Id.menu_pub:
+                        fragment = PubTobbacoFragment.Instantiate(this, Java.Lang.Class.FromType(typeof(PubTobbacoFragment)).Name);
+                        break;
+                    case Resource.Id.menu_tobbaco:
+                        fragment = PubTobbacoFragment.Instantiate(this, Java.Lang.Class.FromType(typeof(PubTobbacoFragment)).Name);
+                        break;
+                }
+
+                if (fragment == null)
+                    return;
+
+                SupportFragmentManager.BeginTransaction()
+                    .Replace(Resource.Id.content_frame, fragment)
+                    .Commit();
             }
             else
             {
-                Log.Error(TAG, "Google Play Services is not installed");
-                listAdapter = new PubAdapter(this, null);
-            }
+                Listlayout.Visibility = Android.Views.ViewStates.Gone;
+                Maplayout.Visibility = Android.Views.ViewStates.Visible;
 
-            pubListView.Adapter = listAdapter;
+                var mapFragment = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.content_frame_map);
+                mapFragment.GetMapAsync(this);
+            }
         }
 
-
-        void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
+        public void OnMapReady(GoogleMap map)
         {
-            var position = e.Position;
-            //if (position == 0)
-            //{
-            //    var geoUri = AndroidUri.Parse("geo:46.0754064, 18.198169");
-            //    var mapIntent = new Intent(Intent.ActionView, geoUri);
-            //    StartActivity(mapIntent);
-            //    return;
-            //}
+            googleMap = map;
 
-            var sampleToStart = listItems[position];
-            sampleToStart.Start(this);
+            googleMap.UiSettings.ZoomControlsEnabled = true;
+            googleMap.UiSettings.CompassEnabled = true;
+            googleMap.UiSettings.MyLocationButtonEnabled = false;
+            AddMarkersToMap();
         }
 
-        bool TestIfGooglePlayServicesIsInstalled()
+        void AddMarkersToMap()
         {
-            var queryResult = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-            if (queryResult == ConnectionResult.Success)
-            {
-                Log.Info(TAG, "Google Play Services is installed on this device.");
-                return true;
-            }
+            var kiskorsoMarker = new MarkerOptions();
+            kiskorsoMarker.SetPosition(kiskorsoLatLng)
+                      .SetTitle("Kiskorsó")
+                      .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan));
+            googleMap.AddMarker(kiskorsoMarker);
 
-            if (GoogleApiAvailability.Instance.IsUserResolvableError(queryResult))
-            {
-                var errorString = GoogleApiAvailability.Instance.GetErrorString(queryResult);
-                Log.Error(TAG, "There is a problem with Google Play Services on this device: {0} - {1}", queryResult, errorString);
-                var errorDialog = GoogleApiAvailability.Instance.GetErrorDialog(this, queryResult, RC_INSTALL_GOOGLE_PLAY_SERVICES);
-                var dialogFrag = new Fragment.ErrorDialogFragment(errorDialog);
 
-                dialogFrag.Show(FragmentManager, "GooglePlayServicesDialog");
-            }
+            var jakabhegyiMarker = new MarkerOptions();
+            jakabhegyiMarker.SetPosition(JakabhegyiLatLng)
+                               .SetTitle("Jakabhegyi Kollégium");
+            googleMap.AddMarker(jakabhegyiMarker);
 
-            return false;
+            var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(kiskorsoLatLng, 15);
+            googleMap.MoveCamera(cameraUpdate);
         }
     }
 }

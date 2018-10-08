@@ -2350,26 +2350,26 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020081
-			public const int avd_hide_password_1 = 2130837633;
+			// aapt resource value: 0x7f020084
+			public const int avd_hide_password_1 = 2130837636;
 			
-			// aapt resource value: 0x7f020082
-			public const int avd_hide_password_2 = 2130837634;
+			// aapt resource value: 0x7f020085
+			public const int avd_hide_password_2 = 2130837637;
 			
-			// aapt resource value: 0x7f020083
-			public const int avd_hide_password_3 = 2130837635;
+			// aapt resource value: 0x7f020086
+			public const int avd_hide_password_3 = 2130837638;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020084
-			public const int avd_show_password_1 = 2130837636;
+			// aapt resource value: 0x7f020087
+			public const int avd_show_password_1 = 2130837639;
 			
-			// aapt resource value: 0x7f020085
-			public const int avd_show_password_2 = 2130837637;
+			// aapt resource value: 0x7f020088
+			public const int avd_show_password_2 = 2130837640;
 			
-			// aapt resource value: 0x7f020086
-			public const int avd_show_password_3 = 2130837638;
+			// aapt resource value: 0x7f020089
+			public const int avd_show_password_3 = 2130837641;
 			
 			// aapt resource value: 0x7f020055
 			public const int common_full_open_on_phone = 2130837589;
@@ -2456,52 +2456,61 @@ namespace xMarksThePub
 			public const int googleg_standard_color_18 = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int icon = 2130837617;
+			public const int ic_local_drink = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int navigation_empty_icon = 2130837618;
+			public const int ic_map = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int notification_action_background = 2130837619;
+			public const int ic_smoking_rooms = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int notification_bg = 2130837620;
+			public const int icon = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int notification_bg_low = 2130837621;
+			public const int navigation_empty_icon = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int notification_bg_low_normal = 2130837622;
+			public const int notification_action_background = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int notification_bg_low_pressed = 2130837623;
+			public const int notification_bg = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int notification_bg_normal = 2130837624;
+			public const int notification_bg_low = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int notification_bg_normal_pressed = 2130837625;
+			public const int notification_bg_low_normal = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int notification_icon_background = 2130837626;
-			
-			// aapt resource value: 0x7f02007f
-			public const int notification_template_icon_bg = 2130837631;
-			
-			// aapt resource value: 0x7f020080
-			public const int notification_template_icon_low_bg = 2130837632;
+			public const int notification_bg_low_pressed = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int notification_tile_bg = 2130837627;
+			public const int notification_bg_normal = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int notify_panel_notification_icon_bg = 2130837628;
+			public const int notification_bg_normal_pressed = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int tooltip_frame_dark = 2130837629;
+			public const int notification_icon_background = 2130837629;
+			
+			// aapt resource value: 0x7f020082
+			public const int notification_template_icon_bg = 2130837634;
+			
+			// aapt resource value: 0x7f020083
+			public const int notification_template_icon_low_bg = 2130837635;
 			
 			// aapt resource value: 0x7f02007e
-			public const int tooltip_frame_light = 2130837630;
+			public const int notification_tile_bg = 2130837630;
+			
+			// aapt resource value: 0x7f02007f
+			public const int notify_panel_notification_icon_bg = 2130837631;
+			
+			// aapt resource value: 0x7f020080
+			public const int tooltip_frame_dark = 2130837632;
+			
+			// aapt resource value: 0x7f020081
+			public const int tooltip_frame_light = 2130837633;
 			
 			static Drawable()
 			{
@@ -2532,7 +2541,10 @@ namespace xMarksThePub
 			public const int META = 2131361856;
 			
 			// aapt resource value: 0x7f0a00bf
-			public const int PubListView = 2131361983;
+			public const int PubListLayout = 2131361983;
+			
+			// aapt resource value: 0x7f0a00c3
+			public const int PubTobbacoListView = 2131361987;
 			
 			// aapt resource value: 0x7f0a0041
 			public const int SHIFT = 2131361857;
@@ -2591,8 +2603,8 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a0066
 			public const int action_mode_close_button = 2131361894;
 			
-			// aapt resource value: 0x7f0a00c5
-			public const int action_settings = 2131361989;
+			// aapt resource value: 0x7f0a00cc
+			public const int action_settings = 2131361996;
 			
 			// aapt resource value: 0x7f0a00ae
 			public const int action_text = 2131361966;
@@ -2639,6 +2651,9 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a0048
 			public const int bottom = 2131361864;
 			
+			// aapt resource value: 0x7f0a00c1
+			public const int bottom_navigation = 2131361985;
+			
 			// aapt resource value: 0x7f0a006d
 			public const int buttonPanel = 2131361901;
 			
@@ -2654,8 +2669,8 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a0051
 			public const int center_vertical = 2131361873;
 			
-			// aapt resource value: 0x7f0a00c0
-			public const int change = 2131361984;
+			// aapt resource value: 0x7f0a00c4
+			public const int change = 2131361988;
 			
 			// aapt resource value: 0x7f0a007d
 			public const int checkbox = 2131361917;
@@ -2677,6 +2692,12 @@ namespace xMarksThePub
 			
 			// aapt resource value: 0x7f0a0070
 			public const int contentPanel = 2131361904;
+			
+			// aapt resource value: 0x7f0a00c0
+			public const int content_frame = 2131361984;
+			
+			// aapt resource value: 0x7f0a00c2
+			public const int content_frame_map = 2131361986;
 			
 			// aapt resource value: 0x7f0a009b
 			public const int coordinator = 2131361947;
@@ -2717,8 +2738,8 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a002c
 			public const int disableHome = 2131361836;
 			
-			// aapt resource value: 0x7f0a00c1
-			public const int dolanImageView = 2131361985;
+			// aapt resource value: 0x7f0a00c5
+			public const int dolanImageView = 2131361989;
 			
 			// aapt resource value: 0x7f0a0088
 			public const int edit_query = 2131361928;
@@ -2825,14 +2846,23 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a00a7
 			public const int map_container = 2131361959;
 			
-			// aapt resource value: 0x7f0a00c4
-			public const int masked = 2131361988;
+			// aapt resource value: 0x7f0a00c8
+			public const int masked = 2131361992;
 			
 			// aapt resource value: 0x7f0a00b2
 			public const int media_actions = 2131361970;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int message = 2131361986;
+			// aapt resource value: 0x7f0a00cb
+			public const int menu_map = 2131361995;
+			
+			// aapt resource value: 0x7f0a00c9
+			public const int menu_pub = 2131361993;
+			
+			// aapt resource value: 0x7f0a00ca
+			public const int menu_tobbaco = 2131361994;
+			
+			// aapt resource value: 0x7f0a00c6
+			public const int message = 2131361990;
 			
 			// aapt resource value: 0x7f0a003c
 			public const int middle = 2131361852;
@@ -3092,8 +3122,8 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a0016
 			public const int view_offset_helper = 2131361814;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int visible = 2131361987;
+			// aapt resource value: 0x7f0a00c7
+			public const int visible = 2131361991;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int wide = 2131361830;
@@ -3350,22 +3380,25 @@ namespace xMarksThePub
 			public const int PubListLayout = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int select_dialog_item_material = 2130903100;
+			public const int PubTobbacoFragment = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int select_dialog_multichoice_material = 2130903101;
+			public const int select_dialog_item_material = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int select_dialog_singlechoice_material = 2130903102;
+			public const int select_dialog_multichoice_material = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int support_simple_spinner_dropdown_item = 2130903103;
+			public const int select_dialog_singlechoice_material = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int TestLayout = 2130903104;
+			public const int support_simple_spinner_dropdown_item = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int tooltip = 2130903105;
+			public const int TestLayout = 2130903105;
+			
+			// aapt resource value: 0x7f030042
+			public const int tooltip = 2130903106;
 			
 			static Layout()
 			{
@@ -3381,7 +3414,10 @@ namespace xMarksThePub
 		{
 			
 			// aapt resource value: 0x7f0d0000
-			public const int menu_main = 2131558400;
+			public const int bottom_navigation = 2131558400;
+			
+			// aapt resource value: 0x7f0d0001
+			public const int menu_main = 2131558401;
 			
 			static Menu()
 			{

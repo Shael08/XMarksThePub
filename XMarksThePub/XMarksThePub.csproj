@@ -61,6 +61,7 @@
     <Compile Include="Adapter\PubAdapter.cs" />
     <Compile Include="FeatureRowHolder.cs" />
     <Compile Include="Fragment\ErrorDialogFragment.cs" />
+    <Compile Include="Fragment\PubTobbacoFragment.cs" />
     <Compile Include="GoogleMapHelpers.cs" />
     <Compile Include="Activity\LocationActivity.cs" />
     <Compile Include="Activity\MainActivity.cs" />
@@ -133,6 +134,23 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\bottom_navigation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_local_drink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_smoking_rooms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\PubTobbacoFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
