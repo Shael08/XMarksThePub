@@ -20,7 +20,7 @@ namespace XMarksThePub.Adapter
         public PubAdapter(Activity context, List<Pub> items) : base()
         {
             this.context = context;
-            this.pubList = items == null ? new List<Pub>(0) : items;
+            this.pubList = items ?? new List<Pub>(0);
         }
         public override long GetItemId(int position)
         {
