@@ -36,14 +36,23 @@ namespace XMarksThePub
         static readonly LatLng JakabhegyiLatLng = new LatLng(46.0754064, 18.198169);
         static readonly LatLng kiskorsoLatLng = new LatLng(46.0771346, 18.2103851);
         GoogleMap googleMap;
+        bool isGooglePlayServicesInstalled;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.PubListLayout);        
+            SetContentView(Resource.Layout.PubListLayout);
+
+            SetFragments();
+        }
+
+        void SetFragments()
+        {
             var interestType = (InterestType)Intent.Extras.GetInt("InterestType");
 
-            if (TestIfGooglePlayServicesIsInstalled())
+            isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
+
+            if (isGooglePlayServicesInstalled)
             {
 
                 bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
@@ -68,7 +77,7 @@ namespace XMarksThePub
 
         bool TestIfGooglePlayServicesIsInstalled()
         {
-            var queryResult = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(Activity);
+            var queryResult = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
             if (queryResult == ConnectionResult.Success)
             {
                 Log.Info(TAG, "Google Play Services is installed on this device.");
@@ -98,7 +107,7 @@ namespace XMarksThePub
             FrameLayout Listlayout = (FrameLayout)FindViewById(Resource.Id.content_frame);
             FrameLayout Maplayout = (FrameLayout)FindViewById(Resource.Id.content_frame_map);
 
-            if (id != Resource.Id.map)
+            if (id != Resource.Id.menu_map)
             {
                 Listlayout.Visibility = Android.Views.ViewStates.Visible;
                 Maplayout.Visibility = Android.Views.ViewStates.Gone;

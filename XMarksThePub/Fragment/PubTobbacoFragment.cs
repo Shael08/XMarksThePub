@@ -34,18 +34,13 @@ namespace xMarksThePub.Fragment
         {
             base.OnCreate(savedInstanceState);
 
-
-            // Create your fragment here
-
+            PopulateList();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             View view = inflater.Inflate(Resource.Layout.PubTobbacoFragment, container, false);
 
-            PopulateList();
             pubListView = view.FindViewById<ListView>(Resource.Id.PubTobbacoListView);
 
             listAdapter = new PubAdapter(Activity, listItems);
@@ -77,14 +72,6 @@ namespace xMarksThePub.Fragment
         void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
         {
             var position = e.Position;
-            //if (position == 0)
-            //{
-            //    var geoUri = AndroidUri.Parse("geo:46.0754064, 18.198169");
-            //    var mapIntent = new Intent(Intent.ActionView, geoUri);
-            //    StartActivity(mapIntent);
-            //    return;
-            //}
-
             var sampleToStart = listItems[position];
             sampleToStart.Start(Activity);
         }
