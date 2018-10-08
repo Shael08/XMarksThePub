@@ -12,13 +12,18 @@ using Android.Widget;
 
 namespace XMarksThePub.Model
 {
+    /// <summary>
+    /// Ez nem szorul különösebb magyarázatra, egyéb infó: lásd MainActivity!
+    /// </summary>
     public enum InterestType
     {
         Pub = 0,
         Tobbaco = 1
     }
 
-
+    /// <summary>
+    /// Ez az alap
+    /// </summary>
     public class Pub
     {
         public Pub(string name, string description, Type activityToLaunch)
