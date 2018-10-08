@@ -66,6 +66,8 @@
     <Compile Include="Activity\MainActivity.cs" />
     <Compile Include="Activity\MapWithMarkersActivity.cs" />
     <Compile Include="ImageLoader.cs" />
+    <Compile Include="JsonHelper.cs" />
+    <Compile Include="Model\OpeningHours.cs" />
     <Compile Include="Model\Pub.cs" />
     <Compile Include="Activity\ListActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -90,6 +92,9 @@
     <AndroidResource Include="Resources\menu\menu_main.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
     </PackageReference>

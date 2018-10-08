@@ -15,6 +15,8 @@ using XMarksThePub.Fragment;
 using Uri = Android.Net.Uri;
 using xMarksThePub;
 using xMarksThePub.Activity;
+using Newtonsoft.Json;
+using xMarksThePub.Model;
 
 namespace XMarksThePub
 {
@@ -25,18 +27,9 @@ namespace XMarksThePub
     {
         public static readonly int RC_INSTALL_GOOGLE_PLAY_SERVICES = 1000;
         public static readonly string TAG = "XMarksThePub";
+        private static List<Pub> listItems = new List<Pub>();
+        bool isGooglePlayServicesInstalled;
 
-
-        static readonly List<Pub> listItems = new List<Pub> {new Pub("Kocsma", "Opening Hours", typeof(LocationActivity)),
-                                                             new Pub("Kiskorsó", "Opening Hours", typeof(MapWithMarkersActivity)),
-                                                             new Pub("Kocsma", "Opening Hours", typeof(LocationActivity)),
-                                                             new Pub("Csinos", "Opening Hours", typeof(MapWithMarkersActivity)),
-                                                             new Pub("ImageTest", "Dolan", typeof(ImageLoaderTestActivity))
-                                                            };
-
-
-
-    bool isGooglePlayServicesInstalled;
         ListView pubListView;
         PubAdapter listAdapter;
 
@@ -48,7 +41,25 @@ namespace XMarksThePub
 
             var interestType = (InterestType)Intent.Extras.GetInt("InterestType");
 
+            PopulateList();
             InitializeListView();
+        }
+
+        private void PopulateList()
+        {
+            Dictionary<string, OpeningHours> openingHours = new Dictionary<string, OpeningHours>();
+
+            for (int i=0; i<7; i++)
+            {
+                openingHours.Add(Enum.GetName(typeof(DayOfWeek), i), new OpeningHours(new TimeSpan(i, 0, 0), new TimeSpan(i + 12, 0, 0)));
+            }
+
+            listItems = new List<Pub> {new Pub("Kocsma", openingHours, typeof(LocationActivity)),
+                                       new Pub("Kiskorsó", openingHours, typeof(MapWithMarkersActivity)),
+                                       new Pub("Kocsma", openingHours, typeof(LocationActivity)),
+                                       new Pub("Csinos", openingHours, typeof(MapWithMarkersActivity)),
+                                       new Pub("ImageTestWithDolan", openingHours, typeof(ImageLoaderTestActivity))
+                                       };
 
         }
 
@@ -93,6 +104,7 @@ namespace XMarksThePub
             pubListView.Adapter = listAdapter;
         }
 
+
         void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
         {
             var position = e.Position;
@@ -103,7 +115,6 @@ namespace XMarksThePub
             //    StartActivity(mapIntent);
             //    return;
             //}
-
 
             var sampleToStart = listItems[position];
             sampleToStart.Start(this);
