@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -8,6 +9,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using xMarksThePub;
+using xMarksThePub.Model;
 using XMarksThePub.Model;
 
 namespace XMarksThePub
@@ -69,7 +71,7 @@ namespace XMarksThePub
 
         private void Dohanybolt_Click(object sender, EventArgs e)
         {
-            interestType = InterestType.Tobbaco;
+            interestType = InterestType.Tobacco;
         }
 
         private void StartClick(object sender, EventArgs e)
