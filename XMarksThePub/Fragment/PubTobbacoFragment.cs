@@ -117,10 +117,18 @@ namespace xMarksThePub.Fragment
             var position = e.Position;
             var sampleToStart = listItems[position];
 
-            string url = GetDirectionsUrl(new LatLng(CurrentLocation.Latitude, CurrentLocation.Longitude), new LatLng(sampleToStart.Latitude, sampleToStart.Longitude));
-            var result = await JsonHelper.Instance.GetReleases(url);
+            if (CurrentLocation != null)
+            {
 
-            sampleToStart.Start(Activity, result);
+                string url = GetDirectionsUrl(new LatLng(CurrentLocation.Latitude, CurrentLocation.Longitude), new LatLng(sampleToStart.Latitude, sampleToStart.Longitude));
+                var result = await JsonHelper.Instance.GetReleases(url);
+
+                sampleToStart.Start(Activity, result);
+            }
+            else
+            {
+                Toast.MakeText(this.Context, "Can not get locataion data", ToastLength.Short);
+            }
         }
 
         private string GetDirectionsUrl(LatLng origin, LatLng dest)
