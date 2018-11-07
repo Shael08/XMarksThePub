@@ -40,6 +40,22 @@ namespace XMarksThePub.Model
         [JsonProperty("types"), Column("InterestType")]
         public Types Types { get; set; }
 
+        public InterestType Type {
+
+            get
+            {
+                if (Types.Name == Enum.GetName(typeof(InterestType), (int)InterestType.Pub))
+                { 
+                    return InterestType.Pub;
+                }
+                else
+                {
+                    return InterestType.Tobacco;
+                }
+
+            }
+        }
+
         [Ignore, JsonIgnore]
         public string Open
         {
@@ -80,11 +96,18 @@ namespace XMarksThePub.Model
         [JsonIgnore]
         public static Type ActivityToLaunch = typeof(MapWithMarkersActivity);
 
-        public void Start(Activity context)
+        public void Start(Activity context, string direction)
         {
             var i = new Intent(context, ActivityToLaunch);
+            i.PutExtra("direction", direction);
             context.StartActivity(i);
         }
     }
 
+    [JsonObject("type")]
+    public class Types
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
 }

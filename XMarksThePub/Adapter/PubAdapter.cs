@@ -15,12 +15,12 @@ namespace XMarksThePub.Adapter
 {
     public class PubAdapter : BaseAdapter<Store>
     {
-        public List<Store> PubList { get; set; }
+        public List<Store> PubList { get; set; } = new List<Store>();
         readonly Activity context;
-        public PubAdapter(Activity context, List<Store> items) : base()
+        public PubAdapter(Activity context) : base()
         {
             this.context = context;
-            this.PubList = items ?? new List<Store>(0);
+ 
         }
         public override long GetItemId(int position)
         {

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Android.App;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -7,17 +7,23 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
 using xMarksThePub;
+using xMarksThePub.Model;
+using Android.Locations;
+using Android.Runtime;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Text;
+using System.Threading;
 
 namespace XMarksThePub
 {
     [Activity(Label = "MapWithMarkersActivity")]
     public class MapWithMarkersActivity : AppCompatActivity, IOnMapReadyCallback
     {
-        static readonly LatLng JakabhegyiLatLng = new LatLng(46.0754064, 18.198169);
-        static readonly LatLng kiskorsoLatLng = new LatLng(46.0771346, 18.2103851);
-        Button animateToLocationButton;
+        static LatLng Origin;
+        static LatLng Destination;
         GoogleMap googleMap;
-
+        List<List<LatLng>> polyline = new List<List<LatLng>>();
 
         public void OnMapReady(GoogleMap map)
         {
@@ -26,67 +32,63 @@ namespace XMarksThePub
             googleMap.UiSettings.ZoomControlsEnabled = true;
             googleMap.UiSettings.CompassEnabled = true;
             googleMap.UiSettings.MyLocationButtonEnabled = false;
+
             AddMarkersToMap();
-            animateToLocationButton.Click += AnimateToJakabhegyi;
+            AddDirection(polyline);
         }
 
+        private void AddDirection(List<List<LatLng>> result)
+        {
+            PolylineOptions lineOptions = new PolylineOptions();
+
+            foreach (var pathList in result)
+            {
+                foreach (var path in pathList)
+                {
+                    lineOptions.Add(path);
+                }
+            }
+            lineOptions.InvokeColor(0x66FF0000);
+            googleMap.AddPolyline(lineOptions);
+        }
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.MapLayout);
 
+            var result = Intent.Extras.GetString("direction");
+
+            var direction = JsonHelper.Instance.Deserialize<DirectionRootObject>(result);
+
+            Origin = new LatLng(direction.routes.First().legs.First().start_location.lat, direction.routes.First().legs.First().start_location.lng);
+            Destination = new LatLng(direction.routes.Last().legs.Last().end_location.lat, direction.routes.Last().legs.Last().end_location.lng);
+            foreach (var route in direction.routes)
+            {
+                polyline.Add(route.overview_polyline.GetDecodedPolyLines);
+            }
+
             var mapFragment = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
 
-            animateToLocationButton = FindViewById<Button>(Resource.Id.animateButton);
-            animateToLocationButton.Click += AnimateToJakabhegyi;
-
-            SetupZoomInButton();
-            SetupZoomOutButton();
-        }
-
-
-        void AnimateToJakabhegyi(object sender, EventArgs e)
-        {
-            var builder = CameraPosition.InvokeBuilder();
-            builder.Target(JakabhegyiLatLng);
-            builder.Zoom(18);
-            builder.Bearing(155);
-            builder.Tilt(65);
-            var cameraPosition = builder.Build();
-
-            googleMap.AnimateCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
         }
 
         void AddMarkersToMap()
         {
-            var kiskorsoMarker = new MarkerOptions();
-            kiskorsoMarker.SetPosition(kiskorsoLatLng)
-                      .SetTitle("Kiskorsó")
+            var destMarker = new MarkerOptions();
+            destMarker.SetPosition(Destination)
                       .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan));
-            googleMap.AddMarker(kiskorsoMarker);
+            googleMap.AddMarker(destMarker);
 
+            var originMarker = new MarkerOptions();
+            originMarker.SetPosition(Origin);
+            googleMap.AddMarker(originMarker);
 
-            var jakabhegyiMarker = new MarkerOptions();
-            jakabhegyiMarker.SetPosition(JakabhegyiLatLng)
-                               .SetTitle("Jakabhegyi Kollégium");
-            googleMap.AddMarker(jakabhegyiMarker);
-
-            var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(kiskorsoLatLng, 15);
+            var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(Origin, 15);
             googleMap.MoveCamera(cameraUpdate);
         }
 
-        void SetupZoomInButton()
-        {
-            var zoomInButton = FindViewById<Button>(Resource.Id.zoomInButton);
-            zoomInButton.Click += (sender, e) => { googleMap.AnimateCamera(CameraUpdateFactory.ZoomIn()); };
-        }
 
-        void SetupZoomOutButton()
-        {
-            var zoomOutButton = FindViewById<Button>(Resource.Id.zoomOutButton);
-            zoomOutButton.Click += (sender, e) => { googleMap.AnimateCamera(CameraUpdateFactory.ZoomOut()); };
-        }
+
     }
 }
