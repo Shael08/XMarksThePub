@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -8,6 +9,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using xMarksThePub;
+using xMarksThePub.Model;
 using XMarksThePub.Model;
 
 namespace XMarksThePub
@@ -19,6 +21,8 @@ namespace XMarksThePub
         Button start;
         RadioButton pub;
         RadioButton tobbaco;
+        static readonly Android.Gms.Maps.Model.LatLng JakabhegyiLatLng = new Android.Gms.Maps.Model.LatLng(46.0754064, 18.198169);
+        static readonly Android.Gms.Maps.Model.LatLng kiskorsoLatLng = new Android.Gms.Maps.Model.LatLng(46.0771346, 18.2103851);
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,6 +30,7 @@ namespace XMarksThePub
             SetContentView(Resource.Layout.activity_main);
 
             InitViews();
+
         }
 
         protected override void OnResume()
@@ -69,7 +74,7 @@ namespace XMarksThePub
 
         private void Dohanybolt_Click(object sender, EventArgs e)
         {
-            interestType = InterestType.Tobbaco;
+            interestType = InterestType.Tobacco;
         }
 
         private void StartClick(object sender, EventArgs e)
@@ -79,6 +84,8 @@ namespace XMarksThePub
 
             StartActivity(intent);
         }
+
+
     }
 }
 

@@ -19,7 +19,7 @@ namespace XMarksThePub
             description = view.FindViewById<TextView>(Resource.Id.description);
         }
 
-        public void UpdateFrom(Pub item)
+        public void UpdateFrom(Store item)
         {
             title.Text = item.Name;
             description.Text = item.Open + " - " + item.Close;

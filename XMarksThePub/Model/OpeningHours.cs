@@ -14,39 +14,19 @@ using SQLite;
 
 namespace xMarksThePub.Model
 {
-    [Table("OpeningHours")]
+
+    [JsonObject("openingHour"), Table("OpeningHours")]
     public class OpeningHours
     {
+        [JsonProperty("closeing"), Column("closeing")]
+        public string CloseString { get; set; }
 
-        public OpeningHours(TimeSpan open, TimeSpan close)
-        {
-            Open = open;
-            Close = close;
-        }
+        [JsonProperty("opening"), Column("opening")]
+        public string OpenString { get; set; }
 
-        [JsonProperty("Open")]
-        public TimeSpan Open { get; set; }
-
-        [JsonProperty("Close")]
-        public TimeSpan Close { get; set; }
-
-        [JsonIgnore, Column("open")]
-        public string OpenString
-        {
-            get
-            {
-                return Open.ToString(@"hh\:mm");
-            }
-        }
-
-        [JsonIgnore, Column("close")]
-        public string CloseString
-        {
-            get
-            {
-                return Close.ToString(@"hh\:mm");
-            }
-        }
-
+        [JsonProperty("weekday"), Column("weekday")]
+        public int Day { get; set; }
+    
+    
     }
 }
