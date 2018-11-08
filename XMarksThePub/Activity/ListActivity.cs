@@ -64,7 +64,7 @@ namespace XMarksThePub
                     case InterestType.Pub:
                         bottomNavigation.SelectedItemId = Resource.Id.menu_pub;
                         break;
-                    case InterestType.Tobbaco:
+                    case InterestType.Tobacco:
                         bottomNavigation.SelectedItemId = Resource.Id.menu_tobbaco;
                         break;
                 }
@@ -113,12 +113,15 @@ namespace XMarksThePub
                 Maplayout.Visibility = Android.Views.ViewStates.Gone;
 
                 Android.Support.V4.App.Fragment fragment = null;
+                Bundle fragBundle = new Bundle();
                 switch (id)
                 {
                     case Resource.Id.menu_pub:
+                        fragBundle.PutInt("type", 0);
                         fragment = PubTobbacoFragment.Instantiate(this, Java.Lang.Class.FromType(typeof(PubTobbacoFragment)).Name);
                         break;
                     case Resource.Id.menu_tobbaco:
+                        fragBundle.PutInt("type", 1);
                         fragment = PubTobbacoFragment.Instantiate(this, Java.Lang.Class.FromType(typeof(PubTobbacoFragment)).Name);
                         break;
                 }
@@ -126,6 +129,7 @@ namespace XMarksThePub
                 if (fragment == null)
                     return;
 
+                fragment.Arguments = fragBundle;
                 SupportFragmentManager.BeginTransaction()
                     .Replace(Resource.Id.content_frame, fragment)
                     .Commit();

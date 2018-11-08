@@ -13,34 +13,34 @@ using XMarksThePub.Model;
 
 namespace XMarksThePub.Adapter
 {
-    public class PubAdapter : BaseAdapter<Pub>
+    public class PubAdapter : BaseAdapter<Store>
     {
-        readonly List<Pub> pubList;
+        public List<Store> PubList { get; set; } = new List<Store>();
         readonly Activity context;
-        public PubAdapter(Activity context, List<Pub> items) : base()
+        public PubAdapter(Activity context) : base()
         {
             this.context = context;
-            this.pubList = items ?? new List<Pub>(0);
+ 
         }
         public override long GetItemId(int position)
         {
             return position;
         }
 
-        public override Pub this[int position]
+        public override Store this[int position]
         {
-            get { return pubList[position]; }
+            get { return PubList[position]; }
         }
 
         public override int Count
         {
-            get { return pubList.Count; }
+            get { return PubList.Count; }
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var row = convertView as FeatureRowHolder ?? new FeatureRowHolder(context);
-            var sample = pubList[position];
+            var sample = PubList[position];
 
             row.UpdateFrom(sample);
             return row;

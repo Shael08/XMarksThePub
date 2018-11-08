@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Gms.Common;
+using Android.Gms.Maps.Model;
+using Android.Locations;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
@@ -24,18 +26,28 @@ namespace xMarksThePub.Fragment
 
     public class PubTobbacoFragment : Android.Support.V4.App.Fragment
     {
-        private static List<Pub> listItems = new List<Pub>();
+        private List<Store> listItems = new List<Store>();
         ListView pubListView;
         PubAdapter listAdapter;
+        string interestType;
+
 
         public PubTobbacoFragment() : base() { }
 
-        public override void OnCreate(Bundle savedInstanceState)
+        public override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            PopulateList();
+
+
+            Bundle args = this.Arguments;
+            int type = args.GetInt("type");
+
+            interestType = Enum.GetNames(typeof(InterestType))[type];
+
+            await PopulateList();
         }
+
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -43,7 +55,7 @@ namespace xMarksThePub.Fragment
 
             pubListView = view.FindViewById<ListView>(Resource.Id.PubTobbacoListView);
 
-            listAdapter = new PubAdapter(Activity, listItems);
+            listAdapter = new PubAdapter(Activity);
 
             pubListView.Adapter = listAdapter;
             pubListView.ItemClick += ItemSelected;
@@ -51,31 +63,28 @@ namespace xMarksThePub.Fragment
             return view;
         }
 
-        private void PopulateList()
+        private async Task PopulateList()
         {
-            Dictionary<string, OpeningHours> openingHours = new Dictionary<string, OpeningHours>();
+            var result = await JsonHelper.Instance.GetReleases("http://shael.pythonanywhere.com/api/store/");
 
-            for (int i = 0; i < 7; i++)
-            {
-                openingHours.Add(Enum.GetName(typeof(DayOfWeek), i), new OpeningHours(new TimeSpan(i, 0, 0), new TimeSpan(i + 12, 0, 0)));
-            }
+            var list = JsonHelper.Instance.Deserialize<AllStore>(result);
 
-            listItems = new List<Pub> {new Pub("Kocsma", openingHours, typeof(LocationActivity)),
-                                       new Pub("Kiskorsó", openingHours, typeof(MapWithMarkersActivity)),
-                                       new Pub("Kocsma", openingHours, typeof(LocationActivity)),
-                                       new Pub("Csinos", openingHours, typeof(MapWithMarkersActivity)),
-                                       new Pub("ImageTestWithDolan", openingHours, typeof(ImageLoaderTestActivity))
-                                       };
+            listItems = list.Stores.FindAll(x => x.Types.Name == interestType);
 
+            listAdapter.PubList = listItems;
+
+            listAdapter.NotifyDataSetChanged();
         }
 
-        void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
+        private void ItemSelected(object sender, AdapterView.ItemClickEventArgs e)
         {
             var position = e.Position;
             var sampleToStart = listItems[position];
-            sampleToStart.Start(Activity);
+
+            var result = JsonHelper.Instance.Serialize(listItems[position]);
+
+            sampleToStart.Start(Activity, result);
+
         }
-
-
     }
 }
