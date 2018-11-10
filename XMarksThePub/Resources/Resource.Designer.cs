@@ -2951,9 +2951,6 @@ namespace xMarksThePub
 			// aapt resource value: 0x7f0a005f
 			public const int scrollable = 2131361887;
 			
-			// aapt resource value: 0x7f0a00bf
-			public const int searchView1 = 2131361983;
-			
 			// aapt resource value: 0x7f0a008a
 			public const int search_badge = 2131361930;
 			
